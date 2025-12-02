@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云服务器折扣信息汇总 - 云服务器折扣网</title>
+    <meta name="description" content="汇总各大云服务商的最新折扣信息，包括阿里云、腾讯云、华为云、UCloud等优惠活动">
+    <meta name="keywords" content="云服务器,折扣信息,优惠券,阿里云,腾讯云,华为云,UCloud,云服务优惠">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="/">云服务器折扣网</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item"><a class="nav-link" href="/">首页</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="/discounts">折扣信息</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about">关于我们</a></li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="/admin">后台管理</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container py-5">
+        <div class="text-center mb-5">
+            <h1>云服务器折扣信息汇总</h1>
+            <p class="lead">最新云服务器优惠券、折扣信息汇总</p>
+        </div>
+
+        <!-- 搜索和筛选 -->
+        <div class="row mb-4">
+            <div class="col-md-8">
+                <input type="text" class="form-control" id="searchInput" placeholder="搜索折扣信息...">
+            </div>
+            <div class="col-md-4">
+                <select class="form-select" id="providerFilter">
+                    <option value="">全部服务商</option>
+                    <option value="aliyun">阿里云</option>
+                    <option value="tencent">腾讯云</option>
+                    <option value="huawei">华为云</option>
+                    <option value="ucloud">UCloud</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- 折扣信息列表 -->
+        <div class="row" id="discountList">
+            <!-- 折扣信息将通过JavaScript加载 -->
+        </div>
+    </main>
+
+    <footer class="footer bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>云服务器折扣网</h5>
+                    <p>聚合各大云服务商的优惠信息，帮您选择最优惠的云服务器方案</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>快速链接</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/" class="text-white">首页</a></li>
+                        <li><a href="/discounts" class="text-white">折扣信息</a></li>
+                        <li><a href="/about" class="text-white">关于我们</a></li>
+                        <li><a href="/admin" class="text-white">后台管理</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>联系方式</h5>
+                    <p>邮箱: info@cloud-discount.com</p>
+                    <p>微信: cloud-discount</p>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2023 云服务器折扣信息聚合网. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 加载所有折扣信息
+            loadAllDiscounts();
+            
+            // 添加搜索事件监听器
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    filterDiscounts();
+                });
+            }
+            
+            // 添加筛选事件监听器
+            const providerFilter = document.getElementById('providerFilter');
+            if (providerFilter) {
+                providerFilter.addEventListener('change', function() {
+                    filterDiscounts();
+                });
+            }
+        });
+
+        // 加载所有折扣信息
+        function loadAllDiscounts() {
+            const container = document.getElementById('discountList');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            // 按时间倒序排列折扣信息
+            const sortedDiscounts = [...discountData].sort((a, b) => new Date(b.validUntil) - new Date(a.validUntil));
+            
+            sortedDiscounts.forEach(discount => {
+                const discountCard = createDetailedDiscountCard(discount);
+                container.appendChild(discountCard);
+            });
+        }
+
+        // 创建详细折扣卡片元素
+        function createDetailedDiscountCard(discount) {
+            const card = document.createElement('div');
+            card.className = 'col-md-6 col-lg-4 mb-4';
+            card.innerHTML = `
+                <div class="card discount-card h-100">
+                    <div class="card-body">
+                        <span class="discount-provider provider-${discount.providerKey}">${discount.provider}</span>
+                        <h5 class="discount-title">${discount.title}</h5>
+                        <p class="discount-description">${discount.description}</p>
+                        <div class="discount-price">
+                            <span class="current-price">¥${discount.discountPrice}</span>
+                            <span class="discount-original-price">¥${discount.originalPrice}</span>
+                        </div>
+                        <div class="mt-2">
+                            <span class="badge bg-danger">${discount.discount} 折扣</span>
+                            <small class="text-muted d-block mt-1">有效期至: ${discount.validUntil}</small>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="${discount.link}" class="btn btn-primary w-100" target="_blank">立即购买</a>
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // 筛选折扣信息
+        function filterDiscounts() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const providerFilter = document.getElementById('providerFilter').value;
+            
+            let filteredDiscounts = discountData;
+            
+            // 按搜索词筛选
+            if (searchTerm) {
+                filteredDiscounts = searchDiscounts(searchTerm);
+            }
+            
+            // 按服务商筛选
+            if (providerFilter) {
+                filteredDiscounts = filteredDiscounts.filter(discount => 
+                    discount.providerKey === providerFilter
+                );
+            }
+            
+            // 按时间倒序排列
+            const sortedDiscounts = filteredDiscounts.sort((a, b) => new Date(b.validUntil) - new Date(a.validUntil));
+            
+            // 更新显示
+            const container = document.getElementById('discountList');
+            if (!container) return;
+            
+            container.innerHTML = '';
+            
+            if (sortedDiscounts.length === 0) {
+                container.innerHTML = '<div class="col-12"><p class="text-center">没有找到符合条件的折扣信息</p></div>';
+                return;
+            }
+            
+            sortedDiscounts.forEach(discount => {
+                const discountCard = createDetailedDiscountCard(discount);
+                container.appendChild(discountCard);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,284 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* 头部导航 */
+.header {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* 轮播图样式 */
+.hero-section {
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+}
+
+#mainCarousel {
+    height: 100%;
+}
+
+.carousel-item {
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.carousel-item:nth-child(1) {
+    background: linear-gradient(rgba(255, 165, 0, 0.7), rgba(255, 165, 0, 0.7)), url('../images/aliyun-bg.jpg') center/cover;
+}
+
+.carousel-item:nth-child(2) {
+    background: linear-gradient(rgba(66, 133, 244, 0.7), rgba(66, 133, 244, 0.7)), url('../images/tencent-bg.jpg') center/cover;
+}
+
+.carousel-item:nth-child(3) {
+    background: linear-gradient(rgba(234, 67, 53, 0.7), rgba(234, 67, 53, 0.7)), url('../images/huawei-bg.jpg') center/cover;
+}
+
+.carousel-item:nth-child(4) {
+    background: linear-gradient(rgba(52, 168, 83, 0.7), rgba(52, 168, 83, 0.7)), url('../images/ucloud-bg.jpg') center/cover;
+}
+
+.carousel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.carousel-content {
+    max-width: 600px;
+    padding: 20px;
+}
+
+.carousel-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.carousel-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.carousel-control-prev, .carousel-control-next {
+    width: 5%;
+}
+
+/* 云服务商展示 */
+.providers-section {
+    background-color: #f8f9fa;
+}
+
+.provider-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+.provider-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    text-decoration: none;
+    color: inherit;
+}
+
+.provider-icon {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.provider-icon img {
+    max-height: 60px;
+    max-width: 100%;
+}
+
+.provider-card h4 {
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+/* 最新折扣信息 */
+.latest-discounts .card {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s;
+    height: 100%;
+}
+
+.latest-discounts .card:hover {
+    transform: translateY(-5px);
+}
+
+.discount-provider {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.provider-aliyun { background-color: #ff6a00; color: white; }
+.provider-tencent { background-color: #2a6df4; color: white; }
+.provider-huawei { background-color: #dc143c; color: white; }
+.provider-ucloud { background-color: #34a853; color: white; }
+
+/* 页脚 */
+.footer {
+    margin-top: 50px;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #adb5bd;
+}
+
+.footer a:hover {
+    color: white;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .hero-section {
+        height: 400px;
+    }
+    
+    .carousel-content h2 {
+        font-size: 2rem;
+    }
+    
+    .carousel-content p {
+        font-size: 1rem;
+    }
+    
+    .provider-icon {
+        height: 60px;
+    }
+    
+    .provider-icon img {
+        max-height: 40px;
+    }
+}
+
+/* 折扣卡片样式 */
+.discount-card {
+    margin-bottom: 20px;
+}
+
+.discount-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.discount-description {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.discount-price {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+.discount-original-price {
+    text-decoration: line-through;
+    color: #999;
+    margin-left: 10px;
+}
+
+.discount-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #e74c3c;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+/* 后台管理页面样式 */
+.admin-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.admin-header {
+    margin-bottom: 30px;
+}
+
+.form-section {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.discount-list {
+    margin-top: 30px;
+}
+
+.discount-item {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 10px;
+}
+
+.discount-actions {
+    margin-top: 10px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}

@@ -1,0 +1,39 @@
+{
+  "name": "cloud-discount-aggregator",
+  "version": "1.0.0",
+  "description": "云服务器折扣信息聚合网站 - 聚合阿里云、腾讯云、华为云、UCloud等云服务商的优惠信息",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "cloud",
+    "discount",
+    "promotion",
+    "server",
+    "aliyun",
+    "tencent-cloud",
+    "huawei-cloud",
+    "ucloud"
+  ],
+  "author": "Cloud Discount Aggregator",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloud-discount-aggregator/cloud-discount-website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cloud-discount-aggregator/cloud-discount-website/issues"
+  },
+  "homepage": "https://github.com/cloud-discount-aggregator/cloud-discount-website#readme"
+}
