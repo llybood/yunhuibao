@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>华为云优惠券 - 华为云折扣信息汇总 - 云服务器折扣网</title>
+    <meta name="description" content="华为云最新优惠券、折扣信息汇总，包括云服务器、数据库、存储等产品优惠活动">
+    <meta name="keywords" content="华为云,优惠券,折扣,云服务器,弹性云服务器,云数据库">
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="/">云服务器折扣网</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item"><a class="nav-link" href="/">首页</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/discounts">折扣信息</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about">关于我们</a></li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="/admin">后台管理</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container py-5">
+        <div class="text-center mb-5">
+            <h1>华为云优惠活动</h1>
+            <p class="lead">最新华为云优惠券、折扣信息汇总</p>
+        </div>
+
+        <div class="row" id="providerDiscounts">
+            <!-- 华为云折扣信息将通过JavaScript加载 -->
+        </div>
+    </main>
+
+    <footer class="footer bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>云服务器折扣网</h5>
+                    <p>聚合各大云服务商的优惠信息，帮您选择最优惠的云服务器方案</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>快速链接</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/" class="text-white">首页</a></li>
+                        <li><a href="/discounts" class="text-white">折扣信息</a></li>
+                        <li><a href="/about" class="text-white">关于我们</a></li>
+                        <li><a href="/admin" class="text-white">后台管理</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>联系方式</h5>
+                    <p>邮箱: info@cloud-discount.com</p>
+                    <p>微信: cloud-discount</p>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2023 云服务器折扣信息聚合网. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 加载华为云折扣信息
+            const container = document.getElementById('providerDiscounts');
+            if (container) {
+                container.innerHTML = getProviderPageContent('huawei');
+            }
+        });
+    </script>
+</body>
+</html>
